@@ -25,54 +25,18 @@
 # define DESTROY_NOTIFY_EVENT 17
 # define MOVE_STEP 5
 
-# define WALL_TILE "../img/wall.xpm"
-# define FLOOR_TILE "../img/floor.xpm"
-# define PLAYER_TILE "../img/player.xpm"
-# define ENEMY_TILE "../img/ghost.xpm"
-# define COLLECTIBLE_TILE "../img/coin.xpm"
-# define EXIT_TILE "../img/exit.xpm"
+# define WALL_TILE "./img/wall.xpm"
+# define FLOOR_TILE "./img/floor.xpm"
+# define PLAYER_TILE "./img/player.xpm"
+# define ENEMY_TILE "./img/ghost.xpm"
+# define COLLECTIBLE_TILE "./img/coin.xpm"
+# define EXIT_TILE "./img/exit.xpm"
 
 # define TILE_SIZE 64
 
-typedef struct s_point {
-	int	x;
-	int	y;
-}				t_point;
-
-typedef struct s_map {
-	char			**map;
-	int				rows;
-	int				columns;
-	int				collectibles;
-	int				exit;
-	int				player;
-	t_point			player_pos;
-}				t_map;
-
-typedef struct s_tiles {
-	void	*wall;
-	void	*floor;
-	void	*player;
-	void	*collectible;
-	void	*exit;
-}				t_tiles;
-
-typedef struct s_mlx_data {
-	t_map		map;
-	void		*mlx_ptr;
-	void		*win_ptr;
-	void		*img_ptr;
-	t_tiles		tiles;
-	int			moves;
-	int			vertical;
-	// int			i;
-	// int			v;
-	int			horizontal;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	int			fd;
+typedef struct t_start
+{
+	int		fd;
 	int		heightmap;
 	int		widthmap;
 	int		playercount;
@@ -81,32 +45,33 @@ typedef struct s_mlx_data {
 	int		x_axis;
 	int		y_axis;
 	int		counter;
-}				t_mlx_data;
+	int		collectables;
 
-static inline t_mlx_data	init_game(void)
-{
-	return ((t_mlx_data){
-		.map.map = NULL,
-		.map.rows = 0,
-		.map.columns = 0,
-		.map.collectibles = 0,
-		.map.exit = 0,
-		.map.player = 0,
-		.tiles.collectible = NULL,
-		.tiles.exit = NULL,
-		.tiles.floor = NULL,
-		.tiles.player = NULL,
-		.tiles.wall = NULL,
-		.moves = -1,
-	});
-}
+	char	**map;
+
+	void	*floor;
+	void	*wall;
+	void	*player;
+	void	*exit;
+	void	*collectable;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_ptr;
+
+}	t_mlx_data;
 
 void	set_window(t_mlx_data *game);
 void	notify(t_mlx_data *game, char *error_msg);
 int handle_key_press(int key, t_mlx_data *game);
 int quit_game(t_mlx_data *game);
 void draw_image(t_mlx_data *game);
-void create_player(t_mlx_data *game);
+void create_player(t_mlx_data *game, int height, int width);
 void runningman(t_mlx_data *game);
+void	check_error(t_mlx_data *game);
+int	exit_point(t_mlx_data *game);
+void	character_valid(t_mlx_data *game);
+void	place_images_in_game(t_mlx_data *game);
+void	adding_in_graphics(t_mlx_data *game);
+void	place_collectable(t_mlx_data *game, int height, int width);
 
 #endif

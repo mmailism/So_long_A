@@ -37,13 +37,13 @@ static int  add_line(t_mlx_data *game, char *line)
     tmppo[game->heightmap] = NULL;
     while (i < game->heightmap - 1)
     {
-        tmppo[i] = game->map.map[i];
+        tmppo[i] = game->map[i];
         i++;
     }
     tmppo[i] = line;
-    if (game->map.map)
-        free(game->map.map);
-    game->map.map = tmppo;
+    if (game->map)
+        free(game->map);
+    game->map = tmppo;
     return (1);
 }
 
@@ -60,8 +60,8 @@ int map_reading(t_mlx_data *game, char **argv)
         if (!add_line(game, readmap))
             break;
     }
-    close (game->fd);
-    game->widthmap = width_of_map(game->map.map[0]);
+    close(game->fd);
+    game->widthmap = width_of_map(game->map[0]);
     return (1);
 }
 
@@ -75,10 +75,17 @@ int main(int argc, char **argv) {
     }
     // Call the function to check if the file is a .ber file and load the map
     ft_memset(&game_data, 0, sizeof(t_mlx_data));
-    map_reading(&game_data, argv);
-    printf("%d", map_reading(&game_data, argv));
-
     set_window(&game_data);
+    map_reading(&game_data, argv);
+    printf("play_c: %d \n col_c : %d \n exit_c: %d", game_data.playercount, game_data.columncount, game_data.exitcount);
+    // printf("%d", map_reading(&game_data, argv));
+
+    check_error(&game_data);
+    place_images_in_game(&game_data);
+	adding_in_graphics(&game_data);
+    printf("Here");
+//	exit(0);
+    // set_window(&game_data);
     runningman(&game_data);
     // printf("%s", (char *)argv[1]);
     // Perform other tasks or game logic
