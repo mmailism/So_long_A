@@ -7,11 +7,7 @@ VPATH = srcs srcs/map srcs/utils
 RM = rm -rf
 NAME = so_long
 
-# UTILS = destroy panic
-# MAP = check_path get_map map_check render_map
-# GENERAL = init_mlx player hook_n_run
-
-SRCS = player.c key.c window.c
+SRCS = map.c so_long.c
 
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

@@ -3,28 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 23:11:48 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2022/12/13 19:10:03 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/08/25 15:06:47 by kpueankl          #+#    #+#             */
+/*   Updated: 2023/08/25 15:06:49 by kpueankl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	size_t	i;
-	size_t	len;
 
 	i = 0;
-	len = n;
-	if (n == 0)
-		return (0);
-	while ((str1[i] == str2[i]) && str1[i] && str2[i] && (len - 1) > 0)
+	while (i < n)
 	{
+		if (str1[i] == '\0' || str2[i] == '\0')
+		{
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		}
+		else if (str1[i] != str2[i])
+		{
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		}
 		i++;
-		len--;
 	}
-	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	return (0);
 }
+
+/*#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	char	word1[] = "BA";
+	char	word2[] = "A";
+	int		size	= 1;
+
+	printf("%d\n", strncmp(word1, word2, size));
+	printf("%d\n", ft_strncmp(word1, word2, size));
+}*/

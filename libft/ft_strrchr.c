@@ -3,27 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 22:08:35 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2022/10/02 02:21:59 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/08/25 15:06:32 by kpueankl          #+#    #+#             */
+/*   Updated: 2023/08/25 15:06:34 by kpueankl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strrchr(const char *str, int c)
+/*size_t 	ft_strlen(const char *str)
 {
-	int	j;
+    size_t i;
 
-	j = ft_strlen (str);
-	if (c == '\0')
-		return ((char *)str + j);
-	while (j >= 0)
+    i = 0;
+    while (*str != '\0')
+    {
+        str++;
+        i++;
+    }
+	return (i);
+}*/
+
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	len;
+	size_t	i;
+
+	len = ft_strlen(s);
+	i = len;
+	while (i < len + 1)
 	{
-		if (str[j] == c)
-			return ((char *)str + j);
-		j--;
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i--;
 	}
-	return (NULL);
+	return (0);
 }
+
+/*#include <stdio.h>
+
+int main()
+{
+	printf("%s\n", ft_strrchr("stray kids stay", 's'));
+	printf("%s\n", ft_strrchr("\0stray kids\0", '\0'));
+	return 0;
+}*/

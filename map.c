@@ -2,9 +2,9 @@
 
 //!check file  is .ber 
 
-bool    is_ber_file(const char *map_file)
+bool	is_ber_file(const char *map_file)
 {
-    size_t	i;
+	size_t	i;
 
 	i = ft_strlen(map_file) - 4;
 	if (ft_strncmp(".ber", &map_file[i], 4) == 0)
@@ -12,60 +12,76 @@ bool    is_ber_file(const char *map_file)
 	return (false);
 }
 
-void    get_map(char *map_file, t_mlx_data *game)
+static int	width_of_map(char *string)
 {
-	if (!is_ber_file(map_file))
-		notify(game, INVALID_MAP_FILE);
-	get_nbr_rows(map_file, game);
-	game->map.map = malloc((game->map.rows + 1) * sizeof(char *));
-	if (!game->map.map)
-		notify(game, MALLOC_ERR);
-	get_lines(map_file, game);
+	int	width;
+
+	width = 0;
+	while (string[width] != '\0')
+		width++;
+	if (string[width - 1] == '\n')
+		width--;
+	return (width);
 }
 
-static void get_nbr_rows(char *map_file, t_mlx_data *game)
+static int  add_line(t_mlx_data *game, char *line)
 {
-    int     cnt;
-    int     map_fd;
-    char    *tmp;
+    char    **tmppo;
+    int     i;
 
-    cnt = 0;
-    map_fd = open(map_file, O_RDONLY);
-    if (map_fd == -1)
-		panic(game, OPEN_MAP_FILE_ERR);
-    tmp = get_next_line(map_fd);
-    while (tmp)
+    if (!line)
+        return (0);
+    i = 0;
+    game->heightmap++;
+    tmppo = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
+    tmppo[game->heightmap] = NULL;
+    while (i < game->heightmap - 1)
     {
-        cnt += 1;
-        free(tmp);
-        tmp = get_next_line(map_fd);
+        tmppo[i] = game->map.map[i];
+        i++;
     }
-    if (cnt == 0)
-		panic(game, EMPTY_MAP_FILE);
-    game->map.rows = cnt;
-    close(map_fd);
+    tmppo[i] = line;
+    if (game->map.map)
+        free(game->map.map);
+    game->map.map = tmppo;
+    return (1);
 }
 
-static void get_lines(char *map_file, t_mlx_data *game)
+int map_reading(t_mlx_data *game, char **argv)
 {
-    int map_fd;
-    int i;
+    char    *readmap;
 
-    map_fd = open(map_file, O_RDONLY);
-    if (map_fd == -1)
-		panic(game, OPEN_MAP_FILE_ERR);
-    i = 0;
-    while (i < game->map.rows)
-        game->map.map[i++] = get_next_line(map_fd);
-    game->map.map[i] = NULL;
-    close(map_fd);
-    i = 0;
-    while (i < (game->map.rows - 1))
+    game->fd = open(argv[1], O_RDONLY);
+    if (game->fd < 0)
+        return (0);
+    while (1)
     {
-        game->map.map[i] = ft_strtrim(game->map.map[i], "\n");
-        if (game->map.map[i])
-			panic(game, MALLOC_ERR);
-        i += 1;
+        readmap = get_next_line(game->fd);
+        if (!add_line(game, readmap))
+            break;
     }
-    game->map.columns = ft_strlen(game->map.map[0]);
+    close (game->fd);
+    game->widthmap = width_of_map(game->map.map[0]);
+    return (1);
+}
+
+int main(int argc, char **argv) {
+    // Initialize your game data structure
+    t_mlx_data game_data;
+    // Set appropriate initial values for game_data members
+     if (argc != 2) {
+        fprintf(stderr, "Usage: %s <map_file.ber>\n", argv[0]);
+        return 1;  // Exit with an error code
+    }
+    // Call the function to check if the file is a .ber file and load the map
+    ft_memset(&game_data, 0, sizeof(t_mlx_data));
+    map_reading(&game_data, argv);
+    printf("%d", map_reading(&game_data, argv));
+
+    set_window(&game_data);
+    runningman(&game_data);
+    // printf("%s", (char *)argv[1]);
+    // Perform other tasks or game logic
+
+    return 0;  // Exit successfully
 }

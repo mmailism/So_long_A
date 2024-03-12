@@ -3,27 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 23:33:27 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2022/11/04 01:00:48 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/08/25 15:07:06 by kpueankl          #+#    #+#             */
+/*   Updated: 2023/08/25 15:07:07 by kpueankl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	unsigned char	*conv_str;
+	unsigned char	*s;
 	size_t			i;
 
-	conv_str = (unsigned char *)str;
+	s = (unsigned char *)str;
 	i = 0;
-	while (n-- > 0)
+	while (n > i)
 	{
-		if (conv_str[i] == (unsigned char)c)
-			return (conv_str + i);
+		if ((unsigned char)c == (unsigned char)s[i])
+			return ((unsigned char *)s + i);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
+
+/*#include <stdio.h>
+
+int main()
+{
+    unsigned char wrd[] = "abcdef";
+
+   printf("%s\n", (char *)ft_memchr(wrd, 'd', sizeof(wrd)));
+   return (0);
+}*/

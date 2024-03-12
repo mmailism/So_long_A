@@ -1,5 +1,9 @@
 {
     "workbench.colorCustomizations": {
         "tab.activeBorderTop": "#FA9E9E"
+    },
+    "files.associations": {
+        "keysym.h": "c",
+        "keysymdef.h": "c"
     }
 }

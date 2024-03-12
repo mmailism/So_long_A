@@ -3,53 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 02:47:05 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/01/23 22:53:24 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/08/25 15:19:23 by kpueankl          #+#    #+#             */
+/*   Updated: 2023/08/25 15:19:25 by kpueankl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_digits(int n)
+static int	ft_numlen(long n)
 {
-	int	digits;
+	int	i;
 
-	digits = 0;
-	if (n <= 0)
-		digits += 1;
+	i = 0;
+	if (n < 0)
+	{
+		i++;
+		n = -n;
+	}
+	if (n == 0)
+		i++;
 	while (n != 0)
 	{
 		n /= 10;
-		digits += 1;
+		i++;
 	}
-	return (digits);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	int		digits;
-	int		signal;
-	char	*result;
+	char	*str;
+	int		i;
 
-	digits = ft_digits(n);
-	signal = 1;
-	result = malloc((digits + 1) * sizeof(char));
-	if (!result)
+	i = ft_numlen(n);
+	str = ft_calloc(i + 1, sizeof(char));
+	if (!str)
 		return (NULL);
-	result[digits--] = '\0';
+	if (n == 0)
+		str[0] = '0';
 	if (n < 0)
 	{
-		signal = -1;
-		result[0] = '-';
+		str[0] = '-';
+		if (n == -2147483648)
+		{
+			str[--i] = '8';
+			n /= 10;
+		}
+		n = -n;
 	}
-	else if (n == 0)
-		result[0] = '0';
-	while (n != 0)
+	while (i-- && n != 0)
 	{
-		result[digits--] = (n % 10 * signal) + '0';
+		str[i] = (n % 10) + '0';
 		n /= 10;
 	}
-	return (result);
+	return (str);
 }
+
+// int	main(void)
+// {
+// 	printf("%s\n", ft_itoa(-623));
+// 	printf("%s\n", ft_itoa(156));
+// 	printf("%s\n", ft_itoa(-0));
+// 	return (0);
+// }

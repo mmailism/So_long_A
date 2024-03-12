@@ -3,26 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 16:36:48 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2023/01/22 02:32:04 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/08/25 15:03:41 by kpueankl          #+#    #+#             */
+/*   Updated: 2023/08/25 15:03:42 by kpueankl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memset(void *ptr, int x, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char	*conv_ptr;
-	size_t			i;
+	unsigned char	*ptr;
 
-	conv_ptr = (unsigned char *)ptr;
-	i = 0;
-	while (i < n)
+	ptr = (unsigned char *)b;
+	while (len > 0)
 	{
-		*(conv_ptr + i) = x;
-		i += 1;
+		*ptr = (unsigned char)c;
+		ptr++;
+		len--;
 	}
-	return (ptr);
+	return (b);
 }
+
+/*#include <stdio.h>
+
+int     main()
+{
+    char    str[] = "atray kids";
+	printf("%s\n", ft_memset(str, 'S', 1));
+
+    printf("%s\n", ft_memset(str, 'g', 1));
+    return (0);
+}*/

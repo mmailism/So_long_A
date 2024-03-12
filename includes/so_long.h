@@ -3,7 +3,7 @@
 
 # include "libft.h"
 # include "error_msg.h"
-# include "../minilibx/mlx.h"
+# include "../mlx/mlx.h"
 # include "key.h"
 # include "assert.h"
 
@@ -72,6 +72,15 @@ typedef struct s_mlx_data {
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
+	int			fd;
+	int		heightmap;
+	int		widthmap;
+	int		playercount;
+	int		columncount;
+	int		exitcount;
+	int		x_axis;
+	int		y_axis;
+	int		counter;
 }				t_mlx_data;
 
 static inline t_mlx_data	init_game(void)
@@ -93,8 +102,11 @@ static inline t_mlx_data	init_game(void)
 }
 
 void	set_window(t_mlx_data *game);
-void	notify(t_mlx_data *game, char *error_msg)
+void	notify(t_mlx_data *game, char *error_msg);
 int handle_key_press(int key, t_mlx_data *game);
 int quit_game(t_mlx_data *game);
+void draw_image(t_mlx_data *game);
+void create_player(t_mlx_data *game);
+void runningman(t_mlx_data *game);
 
 #endif

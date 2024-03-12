@@ -28,21 +28,21 @@ void	set_window(t_mlx_data *game)
 	if (!game->mlx_ptr)
 		notify (game, MLX_INIT_ERR);
 
-	game->win_ptr = mlx_new_window(game->mlx_ptr, game->map.columns, game->map.rows, "SO_LONG!");
+	game->win_ptr = mlx_new_window(game->mlx_ptr, WIDTH, HEIGHT, "SO_LONG!");
 	if (!game->win_ptr)
 		notify (game, MLX_NEW_WINDOW_ERR);
 }
 
-int main()
-{
-	t_mlx_data game;
+// int main()
+// {
+// 	t_mlx_data game;
 
-	// args_check(argc, argv);
-	// game = init_game();
-	// get_map(argv[1], &game);
-	// check_map(&game);
-	set_window(&game);
-	// render_map(&game);
-	runningman(&game);
-	return (EXIT_SUCCESS);
-}
+// 	// args_check(argc, argv);
+// 	// game = init_game();
+// 	// get_map(argv[1], &game);
+// 	// check_map(&game);
+// 	set_window(&game);
+// 	// render_map(&game);
+// 	runningman(&game);
+// 	return (EXIT_SUCCESS);
+// }

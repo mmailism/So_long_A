@@ -3,21 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 03:38:43 by nnuno-ca          #+#    #+#             */
-/*   Updated: 2022/11/04 15:40:51 by nnuno-ca         ###   ########.fr       */
+/*   Created: 2023/08/25 15:03:26 by kpueankl          #+#    #+#             */
+/*   Updated: 2023/08/25 15:03:28 by kpueankl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (*str != '\0')
+	{
+		str++;
 		i++;
+	}
 	return (i);
 }
+
+/*#include <stdio.h>
+#include <string.h>
+
+int	ft_strlen(int i);
+
+int     main()
+{
+        printf("%zu\n", ft_strlen("jhaskhoc"));
+}*/
