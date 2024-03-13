@@ -7,7 +7,7 @@ VPATH = srcs srcs/map srcs/utils
 RM = rm -rf
 NAME = so_long
 
-SRCS = map.c key.c error.c img.c player.c window.c
+SRCS = map.c key.c error.c img.c player.c window.c main.c
 
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

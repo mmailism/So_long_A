@@ -46,6 +46,7 @@ typedef struct t_start
 	int		y_axis;
 	int		counter;
 	int		collectables;
+	int		moves;
 
 	char	**map;
 
@@ -57,6 +58,10 @@ typedef struct t_start
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 
 }	t_mlx_data;
 
@@ -73,5 +78,9 @@ void	character_valid(t_mlx_data *game);
 void	place_images_in_game(t_mlx_data *game);
 void	adding_in_graphics(t_mlx_data *game);
 void	place_collectable(t_mlx_data *game, int height, int width);
+int	map_reading(t_mlx_data *game, char **argv);
+// int	right_move(t_mlx_data *game, int i, int j);
+void	put_player_tile(t_mlx_data *game);
+void	place_player(t_mlx_data *game, int height, int width);
 
 #endif

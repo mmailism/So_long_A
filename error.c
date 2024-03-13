@@ -1,19 +1,5 @@
 #include "includes/so_long.h"
 
-// static void	check_error_xpm(t_mlx_data *game)
-// {
-// 	if (!game->tiles.wall)
-// 		notify(game, WALL_XPM_ERR);
-// 	if (!game->tiles.floor)
-// 		notify(game, PLAYER_XPM_ERR);
-// 	if (!game->tiles.player)
-// 		notify(game, PLAYER_XPM_ERR);
-// 	if (!game->tiles.collectible)
-// 		notify(game, COLLECTIBLE_XPM_ERR);
-// 	if (!game->tiles.exit)
-// 		notify(game, EXIT_XPM_ERR);
-// }
-
 int	exit_point(t_mlx_data *game)
 {
 	int	line;
@@ -40,7 +26,6 @@ static int	vertical_wall(t_mlx_data *game)
 		if (!(game->map[height][0] == '1' && game->map[height][width - 1] == '1'))
 			return (0);
 		height++;
-		
 	}
 	return (1);
 }
@@ -84,18 +69,15 @@ static void	count_check(t_mlx_data *game, int height, int width)
 		game->map[height][width] != COLLECTIBLE &&
 		game->map[height][width] != '\n')
 	{
-		//printf("cerror: %c", game->map[height][width]);
-		printf("h: %d\n",  height);
-		printf("w: %d\n",  width);
-		printf("\nError Here!\n");
+		printf("cerror: %c", game->map[height][width]);
 		exit_point(game);
 	}
 	if (game->map[height][width] == COLLECTIBLE)
-			game->columncount++;
+		game->columncount++;
 	if (game->map[height][width] == PLAYER)
-			game->playercount++;
+		game->playercount++;
 	if (game->map[height][width] == EXIT)
-			game->exitcount++;
+		game->exitcount++;
 }
 
 void	character_valid(t_mlx_data *game)
@@ -116,7 +98,7 @@ void	character_valid(t_mlx_data *game)
 	}
 	if (!(game->playercount == 1 && game->columncount >= 1 && game->exitcount == 1))
 	{
-		printf("play_c: %d \n col_c : %d \n exit_c: %d", game->playercount, game->columncount, game->exitcount);
+		// printf("play_c: %d \n col_c : %d \n exit_c: %d", game->playercount, game->columncount, game->exitcount);
 		printf("\nERROR SOMETHING IS WRONG\n");
 		printf("either player, exit or collectable issue\n");
 		exit_point(game);
@@ -127,6 +109,5 @@ void	character_valid(t_mlx_data *game)
 void	check_error(t_mlx_data *game)
 {
 	is_wall(game);
-	//printf("play_c: %d \n col_c : %d \n exit_c: %d", game->playercount, game->columncount, game->exitcount);
 	character_valid(game);
 }
