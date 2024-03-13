@@ -1,18 +1,18 @@
 #include "includes/so_long.h"
 
-// static void	check_error_xpm(t_mlx_data *game)
-// {
-// 	if (!game->wall)
-// 		notify(game, WALL_XPM_ERR);
-// 	if (!game->floor)
-// 		notify(game, PLAYER_XPM_ERR);
-// 	if (!game->player)
-// 		notify(game, PLAYER_XPM_ERR);
-// 	if (!game->collectable)
-// 		notify(game, COLLECTIBLE_XPM_ERR);
-// 	if (!game->exit)
-// 		notify(game, EXIT_XPM_ERR);
-// }
+static void	check_error_xpm(t_mlx_data *game)
+{
+	if (!game->wall)
+		notify(game, WALL_XPM_ERR);
+	if (!game->floor)
+		notify(game, PLAYER_XPM_ERR);
+	if (!game->player)
+		notify(game, PLAYER_XPM_ERR);
+	if (!game->collectable)
+		notify(game, COLLECTIBLE_XPM_ERR);
+	if (!game->exit)
+		notify(game, EXIT_XPM_ERR);
+}
 
 void	place_images_in_game(t_mlx_data *game)
 {
@@ -29,6 +29,7 @@ void	place_images_in_game(t_mlx_data *game)
 			EXIT_TILE, &img, &img);
 	game->collectable = mlx_xpm_file_to_image(game->mlx_ptr,
 			COLLECTIBLE_TILE, &img, &img);
+	check_error_xpm(game);
 }
 
 void	adding_in_graphics(t_mlx_data *game)

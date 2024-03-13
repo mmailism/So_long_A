@@ -1,20 +1,5 @@
 #include "includes/so_long.h"
 
-// static void	which_tile(t_mlx_data *game);
-// void	put_player_tile(t_mlx_data *game);
-// static void	update_left_behide(t_mlx_data *game);
-// void	player_pos(t_mlx_data *game, bool horizontal, int len);
-
-// void draw_image(t_mlx_data *game)
-// {
-// 	if (game->img_ptr == NULL)
-// 	{
-// 		printf("Error: Image not loaded.\n");
-// 		return ;
-// 	}
-// 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img_ptr, game->x_axis, game->y_axis);
-// }
-
 void	put_player_tile(t_mlx_data *game)
 {
 	char	*moves_str;
@@ -22,7 +7,6 @@ void	put_player_tile(t_mlx_data *game)
 	game->moves += 1;
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player,
 		TILE_SIZE * game->x_axis, TILE_SIZE * game->y_axis);
-	// place_player(game, game->x_axis, game->y_axis);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		game->wall, 0, 0);
 	moves_str = ft_itoa(game->moves);
