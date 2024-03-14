@@ -1,7 +1,7 @@
 #ifndef IMAGES_H
 # define IMAGES_H
 
-# define WALL_TILE "./img/wall.xpm"
+# define WALL_TILE "./img/brick.xpm"
 # define FLOOR_TILE "./img/floor.xpm"
 # define PLAYER_TILE "./img/player.xpm"
 # define ENEMY_TILE "./img/ghost.xpm"
