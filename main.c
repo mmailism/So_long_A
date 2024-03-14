@@ -17,6 +17,7 @@ int main(int argc, char **argv)
     game_data.win_ptr = mlx_new_window(game_data.mlx_ptr, (game_data.widthmap * 64), (game_data.heightmap * 64), "SO_LONG!");
 	if (!game_data.win_ptr)
 		notify (&game_data, MLX_NEW_WINDOW_ERR);
+    put_img_to_win(&game_data);
     place_images_in_game(&game_data);
 	adding_in_graphics(&game_data);
 

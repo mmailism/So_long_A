@@ -66,5 +66,6 @@ void	place_collectable(t_mlx_data *game, int height, int width);
 int		map_reading(t_mlx_data *game, char **argv);
 void	put_player_tile(t_mlx_data *game);
 void	place_player(t_mlx_data *game, int height, int width);
+void	put_img_to_win(t_mlx_data *game);
 
 #endif
