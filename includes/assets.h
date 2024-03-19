@@ -2,7 +2,7 @@
 # define IMAGES_H
 
 # define WALL_TILE "./img/1.xpm"
-# define FLOOR_TILE "./img/2.xpm"
+# define FLOOR_TILE "./img/floor.xpm"
 # define PLAYER_TILE "./img/5.xpm"
 # define ENEMY_TILE "./img/ghost.xpm"
 # define COLLECTIBLE_TILE "./img/4.xpm"

@@ -28,20 +28,3 @@ void	set_window(t_mlx_data *game)
 	if (!game->mlx_ptr)
 		notify (game, MLX_INIT_ERR);
 }
-
-void	put_img_to_win(t_mlx_data *game)
-{
-	void	*image;
-	int		size;
-
-	size = TILE_SIZE;
-	image = mlx_xpm_file_to_image(game->mlx_ptr, "/img/1.xpm", &size, &size);
-    if (!image) {
-        // Handle error loading image
-        fprintf(stderr, "Error loading image.\n");
-        return ;
-    }
-
-    // Draw the image onto the window as the background
-    mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, image, game->widthmap * 64, game->heightmap * 64);
-}
