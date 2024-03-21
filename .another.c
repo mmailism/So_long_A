@@ -341,66 +341,65 @@
 
 /*//! move with press WASD*/
 
-typedef struct s_vars {
-    void *mlx;
-    void *win;
-    int x;
-    int y;
-} t_vars;
+// typedef struct s_vars {
+//     void *mlx;
+//     void *win;
+//     int x;
+//     int y;
+// } t_vars;
 
-void draw_square(t_vars *vars)
-{
-    int i, j;
+// void draw_square(t_vars *vars)
+// {
+//     int i, j;
 
-    i = 0;
-    while (i < 50)
-    {
-        j = 0;
-        while (j < 50)
-        {
-            mlx_pixel_put(vars->mlx, vars->win, vars->x + i, vars->y + j, 0xFFFFFF);
-            j++;
-        }
-        i++;
-    }
-}
+//     i = 0;
+//     while (i < 50)
+//     {
+//         j = 0;
+//         while (j < 50)
+//         {
+//             mlx_pixel_put(vars->mlx, vars->win, vars->x + i, vars->y + j, 0xFFFFFF);
+//             j++;
+//         }
+//         i++;
+//     }
+// }
 
-int key_press(int keycode, t_vars *vars)
-{
-    mlx_clear_window(vars->mlx, vars->win);
+// int key_press(int keycode, t_vars *vars)
+// {
+//     mlx_clear_window(vars->mlx, vars->win);
 
-    if (keycode == 53) // Escape key
-        exit(0);
-    else if (keycode == W) // Left arrow key
-        vars->x -= 10;
-    else if (keycode == D) // Right arrow key
-        vars->x += 10;
-    else if (keycode == S) // Down arrow key
-        vars->y += 10;
-    else if (keycode == A) // Up arrow key
-        vars->y -= 10;
+//     if (keycode == 53) // Escape key
+//         exit(0);
+//     else if (keycode == W) // Left arrow key
+//         vars->x -= 10;
+//     else if (keycode == D) // Right arrow key
+//         vars->x += 10;
+//     else if (keycode == S) // Down arrow key
+//         vars->y += 10;
+//     else if (keycode == A) // Up arrow key
+//         vars->y -= 10;
+//     draw_square(vars);
+//     return (0);
+// }
 
-    draw_square(vars);
-    return (0);
-}
+// int main(void)
+// {
+//     t_vars vars;
 
-int main(void)
-{
-    t_vars vars;
+//     vars.mlx = mlx_init();
+//     vars.win = mlx_new_window(vars.mlx, 800, 600, "MiniLibX Example");
+//     vars.x = 100;
+//     vars.y = 100;
 
-    vars.mlx = mlx_init();
-    vars.win = mlx_new_window(vars.mlx, 800, 600, "MiniLibX Example");
-    vars.x = 100;
-    vars.y = 100;
+//     mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
 
-    mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
+//     draw_square(&vars);
 
-    draw_square(&vars);
+//     mlx_loop(vars.mlx);
 
-    mlx_loop(vars.mlx);
-
-    return (0);
-}
+//     return (0);
+// }
 
 /*//! draw square*/
 

@@ -55,7 +55,7 @@ static void	is_wall(t_mlx_data *game)
 	horiwall = horizontal_wall(game);
 	if (!vertwall || !horiwall)
 	{
-		printf("\nTHIS MAP IS MISSING THE WALLS\n");
+		ft_printf("\nTHIS MAP IS MISSING THE WALLS\n");
 		exit_point(game);
 	}
 }
@@ -69,7 +69,7 @@ static void	count_check(t_mlx_data *game, int height, int width)
 		game->map[height][width] != COLLECTIBLE &&
 		game->map[height][width] != '\n')
 	{
-		printf("cerror: %c", game->map[height][width]);
+		ft_printf("cerror: %c", game->map[height][width]);
 		exit_point(game);
 	}
 	if (game->map[height][width] == COLLECTIBLE)
@@ -98,7 +98,6 @@ void	character_valid(t_mlx_data *game)
 	}
 	if (!(game->playercount == 1 && game->columncount >= 1 && game->exitcount == 1))
 	{
-		// printf("play_c: %d \n col_c : %d \n exit_c: %d", game->playercount, game->columncount, game->exitcount);
 		printf("\nERROR SOMETHING IS WRONG\n");
 		printf("either player, exit or collectable issue\n");
 		exit_point(game);

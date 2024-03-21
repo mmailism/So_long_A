@@ -1,6 +1,5 @@
 #include "includes/so_long.h"
 
-//!check file is .ber 
 bool	is_ber_file(const char *map_file)
 {
 	size_t	i;
@@ -51,6 +50,11 @@ int	map_reading(t_mlx_data *game, char **argv)
 	char	*readmap;
 
 	game->fd = open(argv[1], O_RDONLY);
+	if (is_ber_file(argv[1]) == false)
+	{
+		ft_printf("Usage: %s <name_map_file.ber>\n", argv[0]);
+		exit(0);
+	}
 	if (game->fd == -1)
 		return (0);
 	while (1)

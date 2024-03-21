@@ -1,7 +1,15 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include <fcntl.h>//open, O_RDONLY
+# include <unistd.h>//read, close, write
+# include <stdlib.h>//malloc
+# include <stdio.h>//printf
+# include <stdbool.h>//bool
+# include <stdarg.h>
+# include <limits.h>
 # include "libft.h"
+# include "ft_printf.h"
 # include "error_msg.h"
 # include "../mlx/mlx.h"
 # include "key.h"

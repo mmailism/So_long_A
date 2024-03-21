@@ -21,10 +21,10 @@ void	notify(t_mlx_data *game, char *error_msg)
 	ft_putendl_fd(error_msg, STDERR_FILENO);
 	exit(EXIT_SUCCESS);
 }
-//! start window
+
 void	set_window(t_mlx_data *game)
 {
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
-		notify (game, MLX_INIT_ERR);
+		notify(game, MLX_INIT_ERR);
 }

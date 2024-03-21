@@ -3,7 +3,8 @@ CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 INCLUDE = -I./includes
 LIBFT = ./libft/libft.a
-VPATH = srcs srcs/map srcs/utils
+FTPRINTF = ./ft_printf/libftprintf.a
+VPATH = srcs srcs/map
 RM = rm -rf
 NAME = so_long
 
@@ -17,9 +18,8 @@ all: $(NAME)
 $(NAME): $(OBJ_DIR)  $(OBJS)
 	$(MAKE) -C ./libft
 	$(MAKE) -C ./mlx
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
-
-bonus: all
+	$(MAKE) -C ./ft_printf
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FTPRINTF) $(MLXFLAGS) -o $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p obj

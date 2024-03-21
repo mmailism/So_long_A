@@ -3,6 +3,6 @@
 
 int	main(void)
 {
-	printf("%s", ft_strdup("Phanuwat"));
+	printf("%s", ft_strdup("kankamon"));
 	return (0);
 }
