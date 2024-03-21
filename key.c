@@ -1,5 +1,7 @@
 #include "includes/so_long.h"
 
+// mlx_string_put(game->mlx_ptr, game->win_ptr, 32, 10, 1, moves_str);
+
 void	put_player_tile(t_mlx_data *game)
 {
 	char	*moves_str;
@@ -10,7 +12,7 @@ void	put_player_tile(t_mlx_data *game)
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		game->wall, 0, 0);
 	moves_str = ft_itoa(game->moves);
-	mlx_string_put(game->mlx_ptr, game->win_ptr, 32, 10, 1, moves_str);
+	ft_printf("move count: %i\n", game->moves);
 	free(moves_str);
 }
 
