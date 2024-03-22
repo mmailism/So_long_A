@@ -1,31 +1,17 @@
 #include "includes/so_long.h"
 
-int	exit_point(t_mlx_data *game)
-{
-	int	line;
-
-	line = 0;
-	if (game->win_ptr)
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	free(game->mlx_ptr);
-	while (line < game->heightmap - 1)
-		free(game->map[line++]);
-	free(game->map);
-	exit(0);
-}
-
 static int	vertical_wall(t_mlx_data *game)
 {
-	int	height;
-	int	width;
+	int	i;
+	int	j;
 
-	height = 0;
-	width = game->widthmap;
-	while (height < game->heightmap)
+	i = 0;
+	j = game->widthmap;
+	while (i < game->heightmap)
 	{
-		if (!(game->map[height][0] == '1' && game->map[height][width - 1] == '1'))
+		if (!(game->map[i][0] == '1' && game->map[i][j - 1] == '1'))
 			return (0);
-		height++;
+		i++;
 	}
 	return (1);
 }
@@ -56,11 +42,11 @@ static void	is_wall(t_mlx_data *game)
 	if (!vertwall || !horiwall)
 	{
 		ft_printf("\nTHIS MAP IS MISSING THE WALLS\n");
-		exit_point(game);
+		quit_game(game);
 	}
 }
 
-static void	count_check(t_mlx_data *game, int height, int width)
+void	count_check(t_mlx_data *game, int height, int width)
 {
 	if (game->map[height][width] != WALL &&
 		game->map[height][width] != OPEN_SPACE &&
@@ -70,7 +56,7 @@ static void	count_check(t_mlx_data *game, int height, int width)
 		game->map[height][width] != '\n')
 	{
 		ft_printf("error: %c\n", game->map[height][width]);
-		exit_point(game);
+		quit_game(game);
 	}
 	if (game->map[height][width] == COLLECTIBLE)
 		game->columncount++;
@@ -78,31 +64,6 @@ static void	count_check(t_mlx_data *game, int height, int width)
 		game->playercount++;
 	if (game->map[height][width] == EXIT)
 		game->exitcount++;
-}
-
-void	character_valid(t_mlx_data *game)
-{
-	int	height;
-	int	width;
-
-	height = 0;
-	while (height < game->heightmap - 1)
-	{
-		width = 0;
-		while (width <= game->widthmap)
-		{
-			count_check(game, height, width);
-			width++;
-		}
-		height++;
-	}
-	if (!(game->playercount == 1 && game->columncount >= 1 && game->exitcount == 1))
-	{
-		ft_printf("\nERROR SOMETHING IS WRONG\n");
-		ft_printf("either player, exit or collectable issue\n");
-		exit_point(game);
-	}
-
 }
 
 void	check_error(t_mlx_data *game)

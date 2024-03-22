@@ -76,5 +76,9 @@ void	put_player_tile(t_mlx_data *game);
 void	place_player(t_mlx_data *game, int height, int width);
 void	put_img_to_win(t_mlx_data *game);
 void	put_graphics(t_mlx_data *game, int height, int width);
+int		exit_point(t_mlx_data *game);
+void	check_error(t_mlx_data *game);
+void	character_valid(t_mlx_data *game);
+void	count_check(t_mlx_data *game, int height, int width);
 
 #endif

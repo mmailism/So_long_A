@@ -1,6 +1,6 @@
 #include "includes/so_long.h"
 
-int quit_game(t_mlx_data *game)
+int	quit_game(t_mlx_data *game)
 {
 	if (!game)
 		return (0);
@@ -11,6 +11,8 @@ int quit_game(t_mlx_data *game)
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}
+	if (game->map)
+		free(game->map);
 	exit(EXIT_SUCCESS);
 }
 
