@@ -44,30 +44,33 @@ void	adding_in_graphics(t_mlx_data *game)
 		width = 0;
 		while (game->map[height][width])
 		{
-			if (game->map[height][width] == '1')
-			{
-				mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-					game->wall, width * TILE_SIZE, height * TILE_SIZE);
-			}
-			if (game->map[height][width] == 'C')
-				place_collectable(game, height, width);
-			if (game->map[height][width] == 'P')
-				place_player(game, height, width);
-			if (game->map[height][width] == 'E')
-				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->exit, width * 64, height * 64);
-			if (game->map[height][width] == '0')
-				mlx_put_image_to_window(game->mlx_ptr,
-					game->win_ptr, game->floor, width * 64, height * 64);
+			put_graphics(game, height, width);
 			width++;
 		}
 		height++;
 	}
 }
 
+void	put_graphics(t_mlx_data *game, int height, int width)
+{
+	if (game->map[height][width] == '1')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->wall, width * TILE_SIZE, height * TILE_SIZE);
+	if (game->map[height][width] == 'C')
+		place_collectable(game, height, width);
+	if (game->map[height][width] == 'P')
+		place_player(game, height, width);
+	if (game->map[height][width] == 'E')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->exit, width * TILE_SIZE, height * TILE_SIZE);
+	if (game->map[height][width] == '0')
+		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+			game->floor, width * TILE_SIZE, height * TILE_SIZE);
+}
+
 void	place_collectable(t_mlx_data *game, int height, int width)
 {
-	mlx_put_image_to_window(game->mlx_ptr,
-		game->win_ptr, game->collectable, width * 64, height * 64);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
+		game->collectable, width * TILE_SIZE, height * TILE_SIZE);
 	game->collectables++;
 }

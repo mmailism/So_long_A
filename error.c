@@ -69,7 +69,7 @@ static void	count_check(t_mlx_data *game, int height, int width)
 		game->map[height][width] != COLLECTIBLE &&
 		game->map[height][width] != '\n')
 	{
-		ft_printf("cerror: %c", game->map[height][width]);
+		ft_printf("error: %c\n", game->map[height][width]);
 		exit_point(game);
 	}
 	if (game->map[height][width] == COLLECTIBLE)
@@ -98,8 +98,8 @@ void	character_valid(t_mlx_data *game)
 	}
 	if (!(game->playercount == 1 && game->columncount >= 1 && game->exitcount == 1))
 	{
-		printf("\nERROR SOMETHING IS WRONG\n");
-		printf("either player, exit or collectable issue\n");
+		ft_printf("\nERROR SOMETHING IS WRONG\n");
+		ft_printf("either player, exit or collectable issue\n");
 		exit_point(game);
 	}
 

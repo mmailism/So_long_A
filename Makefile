@@ -4,7 +4,6 @@ MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 INCLUDE = -I./includes
 LIBFT = ./libft/libft.a
 FTPRINTF = ./ft_printf/libftprintf.a
-VPATH = srcs srcs/map
 RM = rm -rf
 NAME = so_long
 
