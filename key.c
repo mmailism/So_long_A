@@ -73,7 +73,7 @@ void	player_pos(t_mlx_data *game, bool horizontal, int len)
 
 int	handle_key_press(int key, t_mlx_data *game)
 {
-	if (key == ESC || key == Key_x)
+	if (key == ESC || key == KEY_X)
 		quit_game(game);
 	else if (key == W || key == UP)
 		player_pos(game, false, -1);

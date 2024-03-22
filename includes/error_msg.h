@@ -1,6 +1,5 @@
-
-#ifndef ERROR_MESSAGES_H
-# define ERROR_MESSAGES_H
+#ifndef ERROR_MSG_H
+# define ERROR_MSG_H
 
 /* ERROR MESSAGES */
 

@@ -6,7 +6,7 @@
 /*   By: iammai <iammai@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 15:41:16 by kpueankl          #+#    #+#             */
-/*   Updated: 2024/03/19 16:38:39 by iammai           ###   ########.fr       */
+/*   Updated: 2024/03/22 17:34:53 by iammai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <string.h>
 # include <fcntl.h>
 # include <limits.h>
-
 
 char	*get_next_line(int fd);
 char	*read_line(int fd, char *buffer, char **addr_list, int rd);

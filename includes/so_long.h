@@ -37,7 +37,6 @@ typedef struct t_start
 	int		exitcount;
 	int		x_axis;
 	int		y_axis;
-	// int		counter;
 	int		collectables;
 	int		moves;
 
@@ -51,11 +50,6 @@ typedef struct t_start
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img_ptr;
-	// char	*addr;
-	// int		bits_per_pixel;
-	// int		line_length;
-	// int		endian;
-
 }	t_mlx_data;
 
 void	set_window(t_mlx_data *game);

@@ -1,5 +1,5 @@
-#ifndef IMAGES_H
-# define IMAGES_H
+#ifndef ASSETS_H
+# define ASSETS_H
 
 # define WALL_TILE "./img/1.xpm"
 # define FLOOR_TILE "./img/floor.xpm"
