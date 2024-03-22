@@ -59,7 +59,7 @@ void	count_check(t_mlx_data *game, int height, int width)
 		quit_game(game);
 	}
 	if (game->map[height][width] == COLLECTIBLE)
-		game->columncount++;
+		game->colleccount++;
 	if (game->map[height][width] == PLAYER)
 		game->playercount++;
 	if (game->map[height][width] == EXIT)

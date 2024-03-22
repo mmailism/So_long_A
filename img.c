@@ -37,7 +37,7 @@ void	adding_in_graphics(t_mlx_data *game)
 	int	height;
 	int	width;
 
-	game->collectables = 0;
+	game->collec_cnt = 0;
 	height = 0;
 	while (height < game->heightmap)
 	{
@@ -72,5 +72,5 @@ void	place_collectable(t_mlx_data *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 		game->collectable, width * TILE_SIZE, height * TILE_SIZE);
-	game->collectables++;
+	game->collec_cnt++;
 }

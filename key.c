@@ -2,18 +2,12 @@
 
 // mlx_string_put(game->mlx_ptr, game->win_ptr, 32, 10, 1, moves_str);
 
-void	put_player_tile(t_mlx_data *game)
+static void	put_player_n_move_count(t_mlx_data *game)
 {
-	char	*moves_str;
-
 	game->moves += 1;
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->player,
 		TILE_SIZE * game->x_axis, TILE_SIZE * game->y_axis);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
-		game->wall, 0, 0);
-	moves_str = ft_itoa(game->moves);
 	ft_printf("move count: %i\n", game->moves);
-	free(moves_str);
 }
 
 static void	which_tile(t_mlx_data *game)
@@ -23,11 +17,11 @@ static void	which_tile(t_mlx_data *game)
 	{
 		game->map[game->y_axis]
 		[game->x_axis] = OPEN_SPACE;
-		game->collectables -= 1;
+		game->collec_cnt -= 1;
 		return ;
 	}
 	if (game->map[game->y_axis][game->x_axis] == EXIT
-		&& game->collectables == 0)
+		&& game->collec_cnt == 0)
 	{
 		ft_printf("You Found the EXIT!!!!\n");
 		quit_game(game);
@@ -61,14 +55,13 @@ void	player_pos(t_mlx_data *game, bool horizontal, int len)
 	}
 	else
 	{
-		if (game->map[game->y_axis + len]
-			[game->x_axis] == WALL)
+		if (game->map[game->y_axis + len][game->x_axis] == WALL)
 			return ;
 		update_left_behide(game);
 		game->y_axis += len;
 	}
 	which_tile(game);
-	put_player_tile(game);
+	put_player_n_move_count(game);
 }
 
 int	handle_key_press(int key, t_mlx_data *game)

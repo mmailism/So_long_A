@@ -4,7 +4,6 @@
 # include <fcntl.h>//open, O_RDONLY
 # include <unistd.h>//read, close, write
 # include <stdlib.h>//malloc
-# include <stdio.h>//printf
 # include <stdbool.h>//bool
 # include <stdarg.h>
 # include <limits.h>
@@ -30,14 +29,17 @@
 typedef struct t_start
 {
 	int		fd;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_ptr;
 	int		heightmap;
 	int		widthmap;
 	int		playercount;
-	int		columncount;
+	int		colleccount;
 	int		exitcount;
 	int		x_axis;
 	int		y_axis;
-	int		collectables;
+	int		collec_cnt;
 	int		moves;
 
 	char	**map;
@@ -47,12 +49,9 @@ typedef struct t_start
 	void	*player;
 	void	*exit;
 	void	*collectable;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
 }	t_mlx_data;
 
-void	set_window(t_mlx_data *game);
+void	set_start(t_mlx_data *game);
 void	notify(t_mlx_data *game, char *error_msg);
 int		handle_key_press(int key, t_mlx_data *game);
 int		quit_game(t_mlx_data *game);
@@ -60,17 +59,14 @@ void	draw_image(t_mlx_data *game);
 void	create_player(t_mlx_data *game, int height, int width);
 void	runningman(t_mlx_data *game);
 void	check_error(t_mlx_data *game);
-int		exit_point(t_mlx_data *game);
 void	character_valid(t_mlx_data *game);
 void	place_images_in_game(t_mlx_data *game);
 void	adding_in_graphics(t_mlx_data *game);
 void	place_collectable(t_mlx_data *game, int height, int width);
 int		map_reading(t_mlx_data *game, char **argv);
-void	put_player_tile(t_mlx_data *game);
 void	place_player(t_mlx_data *game, int height, int width);
 void	put_img_to_win(t_mlx_data *game);
 void	put_graphics(t_mlx_data *game, int height, int width);
-int		exit_point(t_mlx_data *game);
 void	check_error(t_mlx_data *game);
 void	character_valid(t_mlx_data *game);
 void	count_check(t_mlx_data *game, int height, int width);

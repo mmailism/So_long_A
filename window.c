@@ -1,6 +1,15 @@
 #include "includes/so_long.h"
 
-int	quit_game(t_mlx_data *game)
+/* set_start is start use a minilibx by funtion mlx_init*/
+
+void	set_start(t_mlx_data *game)
+{
+	game->mlx_ptr = mlx_init();
+	if (!game->mlx_ptr)
+		notify(game, MLX_INIT_ERR);
+}
+
+int quit_game(t_mlx_data *game)
 {
 	if (!game)
 		return (0);
@@ -22,11 +31,4 @@ void	notify(t_mlx_data *game, char *error_msg)
 	ft_putstr_fd("Error: ", STDERR_FILENO);
 	ft_putendl_fd(error_msg, STDERR_FILENO);
 	exit(EXIT_SUCCESS);
-}
-
-void	set_window(t_mlx_data *game)
-{
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
-		notify(game, MLX_INIT_ERR);
 }

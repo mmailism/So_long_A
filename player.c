@@ -32,7 +32,7 @@ void	character_valid(t_mlx_data *game)
 		}
 		height++;
 	}
-	if (!(game->playercount == 1 && game->columncount >= 1
+	if (!(game->playercount == 1 && game->colleccount >= 1
 			&& game->exitcount == 1))
 	{
 		ft_printf("\nERROR SOMETHING IS WRONG\n");
