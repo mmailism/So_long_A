@@ -18,8 +18,8 @@ void	runningman(t_mlx_data *game)
 
 void	character_valid(t_mlx_data *game)
 {
-	int	height;
-	int	width;
+	int		height;
+	int		width;
 
 	height = 0;
 	while (height < game->heightmap - 1)

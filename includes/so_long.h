@@ -37,6 +37,7 @@ typedef struct t_start
 	int		playercount;
 	int		colleccount;
 	int		exitcount;
+	int		fill_cnt;
 	int		x_axis;
 	int		y_axis;
 	int		collec_cnt;
@@ -70,5 +71,9 @@ void	put_graphics(t_mlx_data *game, int height, int width);
 void	check_error(t_mlx_data *game);
 void	character_valid(t_mlx_data *game);
 void	count_check(t_mlx_data *game, int height, int width);
+void	free_game(t_mlx_data *game);
+bool	check_after(t_mlx_data *game);
+bool	check_path(t_mlx_data *game);
+void	check_fill_pni(t_mlx_data *game, int height, int width, bool *is_f);
 
 #endif

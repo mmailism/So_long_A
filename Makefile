@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 INCLUDE = -I./includes
 LIBFT = ./libft/libft.a
@@ -7,7 +7,7 @@ FTPRINTF = ./ft_printf/libftprintf.a
 RM = rm -rf
 NAME = so_long
 
-SRCS = map.c key.c error.c img.c player.c window.c main.c
+SRCS = map.c key.c error.c img.c player.c window.c main.c check_path.c
 
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

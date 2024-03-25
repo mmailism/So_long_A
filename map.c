@@ -32,6 +32,8 @@ int	add_line(t_mlx_data *game, char *line)
 	i = 0;
 	game->heightmap++;
 	tmppo = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
+	if (tmppo == NULL)
+		free(tmppo);
 	tmppo[game->heightmap] = NULL;
 	while (i < game->heightmap - 1)
 	{
@@ -64,6 +66,7 @@ int	map_reading(t_mlx_data *game, char **argv)
 			break ;
 	}
 	close(game->fd);
+	free(readmap);
 	game->widthmap = width_of_map(game->map[0]);
 	return (1);
 }
