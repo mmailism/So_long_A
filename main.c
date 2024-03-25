@@ -19,6 +19,11 @@ int	main(int argc, char **argv)
 	set_start(&game);
 	map_reading(&game, argv);
 	check_error(&game);
+	// if(!check_path(argv))
+	// {
+	// 	ft_printf("Error: invalid map\n");
+	// 	notify(&game, INVALID_ENTITY);
+	// }
 	game.win_ptr = mlx_new_window(game.mlx_ptr,
 			(game.widthmap * 64), (game.heightmap * 64), "OS GOLN MEAG!");
 	if (!game.win_ptr)

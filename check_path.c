@@ -1,69 +1,71 @@
 #include "includes/so_long.h"
 
-void	check_fill_pni(t_mlx_data *game, int height, int width, bool *is_f)
+static void	check_fill_pni(char ***map, int i, int j, bool *is_f)
 {
-	if (game->map[height][width - 1] != '1' && game->map[height][width - 1] != 'P')
+	if ((*map)[i][j - 1] != '1' && (*map)[i][j - 1] != 'P')
 	{
-		game->map[height][width - 1] = 'P';
+		(*map)[i][j - 1] = 'P';
 		*is_f = true;
 	}
-	if (game->map[height][width + 1] != '1' && game->map[height][width + 1] != 'P')
+	if ((*map)[i][j + 1] != '1' && (*map)[i][j + 1] != 'P')
 	{
-		game->map[height][width + 1] = 'P';
+		(*map)[i][j + 1] = 'P';
 		*is_f = true;
 	}
-	if (game->map[height + 1][width] != '1' && game->map[height + 1][width] != 'P')
+	if ((*map)[i + 1][j] != '1' && (*map)[i + 1][j] != 'P')
 	{
-		game->map[height + 1][width] = 'P';
+		(*map)[i + 1][j] = 'P';
 		*is_f = true;
 	}
-	if (game->map[height - 1][width] != '1' && game->map[height - 1][width] != 'P')
+	if ((*map)[i - 1][j] != '1' && (*map)[i - 1][j] != 'P')
 	{
-		game->map[height - 1][width] = 'P';
+		(*map)[i - 1][j] = 'P';
 		*is_f = true;
 	}
 }
 
-bool	check_after(t_mlx_data *game)
+static bool	check_after(char **map)
 {
-	int	height;
-	int	width;
+	int	i;
+	int	j;
 
-	height = 0;
-	while (game->map[height])
+	i = 0;
+	while (map[i])
 	{
-		width = 0;
-		while (game->map[height][width])
+		j = 0;
+		while (map[i][j])
 		{
-			if (game->map[height][width] == 'E' && game->map[height][width] == 'C')
+			if (map[i][j] == 'E' || map[i][j] == 'C')
 				return (false);
-			width++;
+			j++;
 		}
-		height++;
+		i++;
 	}
 	return (true);
 }
 
-bool	check_path(t_mlx_data *game)
+bool	check_path(char **map)
 {
 	bool	is_f;
-	int		height;
-	int		width;
+	int		i;
+	int		j;
 
-	height = 0;
 	is_f = true;
-	while (game->map[height])
+	while (is_f)
 	{
-		width = 0;
+		i = 0;
 		is_f = false;
-		while (game->map[height][width])
+		while (map[i])
 		{
-			if (game->map[height][width] == 'P')
-				check_fill_pni(game, height, width, &is_f);
-			width++;
+			j = 0;
+			while (map[i][j])
+			{
+				if (map[i][j] == 'P')
+					check_fill_pni(&map, i, j, &is_f);
+				j++;
+			}
+			i++;
 		}
-		height++;
 	}
-	printf("%d", is_f);
-	return (0);
+	return (check_after(map));
 }

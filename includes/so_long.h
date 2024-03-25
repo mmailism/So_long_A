@@ -59,8 +59,6 @@ int		quit_game(t_mlx_data *game);
 void	draw_image(t_mlx_data *game);
 void	create_player(t_mlx_data *game, int height, int width);
 void	runningman(t_mlx_data *game);
-void	check_error(t_mlx_data *game);
-void	character_valid(t_mlx_data *game);
 void	place_images_in_game(t_mlx_data *game);
 void	adding_in_graphics(t_mlx_data *game);
 void	place_collectable(t_mlx_data *game, int height, int width);
@@ -69,10 +67,14 @@ void	place_player(t_mlx_data *game, int height, int width);
 void	put_img_to_win(t_mlx_data *game);
 void	put_graphics(t_mlx_data *game, int height, int width);
 void	check_error(t_mlx_data *game);
+// void	check_error(t_mlx_data *game);
 void	character_valid(t_mlx_data *game);
+// void	character_valid(t_mlx_data *game, char **map);
 void	count_check(t_mlx_data *game, int height, int width);
-bool	check_after(t_mlx_data *game);
-bool	check_path(t_mlx_data *game);
-void	check_fill_pni(t_mlx_data *game, int height, int width, bool *is_f);
+// bool	check_after(t_mlx_data *game);
+bool	check_path(char **map);
+// bool	check_path(t_mlx_data *game);
+bool	return_check(char **map);
+// void	check_fill_pni(t_mlx_data *game, int height, int width, bool *is_f);
 
 #endif

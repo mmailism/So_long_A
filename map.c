@@ -32,6 +32,8 @@ int	add_line(t_mlx_data *game, char *line)
 	i = 0;
 	game->heightmap++;
 	tmppo = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
+	if (!tmppo)
+		notify(game, MALLOC_ERR);
 	tmppo[game->heightmap] = NULL;
 	while (i < game->heightmap - 1)
 	{
@@ -48,22 +50,23 @@ int	add_line(t_mlx_data *game, char *line)
 int	map_reading(t_mlx_data *game, char **argv)
 {
 	char	*readmap;
+	int		map_fd;
 
-	game->fd = open(argv[1], O_RDONLY);
+	map_fd = open(argv[1], O_RDONLY);
 	if (is_ber_file(argv[1]) == false)
 	{
 		ft_printf("Usage: %s <name_map_file.ber>\n", argv[0]);
 		exit(0);
 	}
-	if (game->fd == -1)
+	if (map_fd == -1)
 		notify(game, OPEN_MAP_FILE_ERR);
 	while (1)
 	{
-		readmap = get_next_line(game->fd);
+		readmap = get_next_line(map_fd);
 		if (!add_line(game, readmap))
 			break ;
 	}
-	close(game->fd);
+	close(map_fd);
 	free(readmap);
 	game->widthmap = width_of_map(game->map[0]);
 	return (1);
