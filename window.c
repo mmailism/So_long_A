@@ -20,7 +20,6 @@ int quit_game(t_mlx_data *game)
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}
-	free_game(game);
 	exit(EXIT_SUCCESS);
 }
 

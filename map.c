@@ -32,8 +32,6 @@ int	add_line(t_mlx_data *game, char *line)
 	i = 0;
 	game->heightmap++;
 	tmppo = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
-	if (tmppo == NULL)
-		free(tmppo);
 	tmppo[game->heightmap] = NULL;
 	while (i < game->heightmap - 1)
 	{
@@ -58,7 +56,7 @@ int	map_reading(t_mlx_data *game, char **argv)
 		exit(0);
 	}
 	if (game->fd == -1)
-		return (0);
+		notify(game, OPEN_MAP_FILE_ERR);
 	while (1)
 	{
 		readmap = get_next_line(game->fd);

@@ -71,7 +71,6 @@ void	put_graphics(t_mlx_data *game, int height, int width);
 void	check_error(t_mlx_data *game);
 void	character_valid(t_mlx_data *game);
 void	count_check(t_mlx_data *game, int height, int width);
-void	free_game(t_mlx_data *game);
 bool	check_after(t_mlx_data *game);
 bool	check_path(t_mlx_data *game);
 void	check_fill_pni(t_mlx_data *game, int height, int width, bool *is_f);

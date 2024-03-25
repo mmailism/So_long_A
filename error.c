@@ -70,9 +70,5 @@ void	check_error(t_mlx_data *game)
 {
 	is_wall(game);
 	character_valid(game);
-	if (!check_path(game))
-	{
-		printf("HEEEEHE");
-		exit(0);
-	}
+	// if (!check_path(game))
 }
