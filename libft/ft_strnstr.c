@@ -3,52 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mailism <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 15:07:58 by kpueankl          #+#    #+#             */
-/*   Updated: 2023/09/21 15:52:59 by mailism          ###   ########.fr       */
+/*   Created: 2022/08/15 00:12:36 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2022/11/04 15:52:08 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
-	if (haystack == NULL && n == 0)
+	if ((!little || !big) && len == 0)
 		return (NULL);
-	if (*needle == 0)
-		return ((char *)haystack);
+	if (!*little)
+		return ((char *)big);
 	i = 0;
-	while (haystack[i] && i < n)
+	while (big[i] != '\0' && i < len)
 	{
 		j = 0;
-		while (needle[j] == haystack[i + j] && i + j < n)
+		while (big[i + j] != '\0' && little[j] != '\0'
+			&& big[i + j] == little[j] && (i + j) < len)
 		{
-			if (needle[j + 1] == '\0')
-			{
-				return ((char *)haystack + i);
-			}
+			if (little[j + 1] == '\0')
+				return ((char *)&(big[i]));
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
-
-/*#include <stdio.h>
-#include <string.h>
-
-int main()
-{
-    const char *string_b = "This is a sample string.";
-    const char *string_a = "sample";
-    size_t len = 0;
-
-    const char *result = ft_strnstr(string_b, string_a, len);
-    printf("Found substring: %s\n", result);
-    return 0;
-}*/

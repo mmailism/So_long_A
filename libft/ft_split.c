@@ -3,112 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mailism <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 15:19:07 by kpueankl          #+#    #+#             */
-/*   Updated: 2023/09/22 17:23:10 by mailism          ###   ########.fr       */
+/*   Created: 2022/10/11 19:42:18 by roramos           #+#    #+#             */
+/*   Updated: 2023/01/27 19:05:50 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-static char	*al_word(const char *str, int start, int end)
+static int	words_counter(char const *s, char c)
 {
-	int		i;
-	char	*dst;
-
-	i = 0;
-	dst = (char *)malloc(((end - start) + 1) * sizeof(char));
-	if (dst == NULL)
-		return (NULL);
-	while (start < end)
-	{
-		dst[i] = str[start];
-		i++;
-		start++;
-	}
-	dst[i] = 0;
-	return (dst);
-}
-
-static int	word_count(const char *str, char n)
-{
-	int	count;
+	int	words;
+	int	flag;
 	int	i;
 
-	count = 0;
+	words = 0;
+	flag = 0;
 	i = 0;
-	while (*str)
+	while (s[i])
 	{
-		if (*str != n && i == 0)
+		if (s[i] != c && flag == 0)
 		{
-			i = 1;
-			count++;
+			flag = 1;
+			words++;
 		}
-		else if (*str == n)
-			i = 0;
-		str++;
-	}
-	return (count);
-}
-
-static void	*ft_free(char **strs, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		free(strs[i]);
+		else if (s[i] == c)
+			flag = 0;
 		i++;
 	}
-	free(strs);
-	return (NULL);
+	return (words);
 }
 
-static void	ft_numalt(size_t *i, int *j, int *s_word)
+static int	letters_in_word(char const *s, char c, int i)
 {
-	*i = 0;
-	*j = 0;
-	*s_word = -1;
+	int	size;
+
+	size = 0;
+	while (s[i] && s[i] != c)
+	{
+		size++;
+		i++;
+	}
+	return (size);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**altw;
-	size_t	i;
+	int		i;
 	int		j;
-	int		s_word;
+	int		word;
+	char	**str;
 
-	ft_numalt(&i, &j, &s_word);
-	altw = ft_calloc((word_count(s, c) + 1), sizeof(char *));
-	if (!altw || !s)
+	if (!s)
 		return (NULL);
-	while (i <= ft_strlen((char *)s))
+	i = 0;
+	j = -1;
+	word = words_counter(s, c);
+	str = malloc((word + 1) * sizeof(char *));
+	if (!str)
+		return (NULL);
+	while (++j < word)
 	{
-		if (s[i] != c && s_word < 0)
-			s_word = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && s_word >= 0)
-		{
-			altw[j] = al_word(s, s_word, i);
-			if (!(altw[j]))
-				return (ft_free(altw, j));
-			s_word = -1;
-			j++;
-		}
-		i++;
+		while (s[i] == c)
+			i++;
+		str[j] = ft_substr(s, i, letters_in_word(s, c, i));
+		if (!str)
+			return (NULL);
+		i += letters_in_word(s, c, i);
 	}
-	return (altw);
+	str[j] = NULL;
+	return (str);
 }
-
-// #include <stdio.h>
-
-// int main()
-// {
-// 	char	**tab;
-
-// 	tab = ft_split("tripouille", 0);
-// 	printf("%d\n", tab[1] == NULL);
-// 	return (0);
-// }

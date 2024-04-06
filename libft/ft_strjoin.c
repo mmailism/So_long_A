@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 15:16:57 by kpueankl          #+#    #+#             */
-/*   Updated: 2023/08/25 15:17:00 by kpueankl         ###   ########.fr       */
+/*   Created: 2022/08/18 23:09:37 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2022/11/04 01:03:58 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*res;
+	size_t	len_s1;
+	size_t	len_s2;
+	char	*final_str;
+	size_t	i;
+	size_t	j;
 
-	if (!s1)
+	if (!s1 || !s2)
 		return (NULL);
-	res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!res)
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	final_str = malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	i = 0;
+	j = 0;
+	if (final_str == NULL)
 		return (NULL);
-	ft_memmove(res, s1, ft_strlen(s1));
-	ft_memmove(res + ft_strlen(s1), s2, ft_strlen(s2));
-	res[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	return (res);
+	while (j < len_s1)
+		final_str[i++] = s1[j++];
+	j = 0;
+	while (j < len_s2)
+		final_str[i++] = s2[j++];
+	final_str[i] = '\0';
+	return (final_str);
 }
-// #include <stdio.h>
-// int main()
-// {
-// 	printf("%s\n", ft_strjoin("", "stray"));
-
-// 	return (0);
-// }

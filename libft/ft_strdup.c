@@ -3,33 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nnuno-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 19:10:41 by kpueankl          #+#    #+#             */
-/*   Updated: 2023/09/04 19:10:53 by kpueankl         ###   ########.fr       */
+/*   Created: 2022/08/18 00:47:52 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2022/10/02 02:09:00 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
-	char	*alt;
-	char	n;
+	unsigned int	i;
+	char			*dup_s;
 
-	n = ft_strlen(s1) + 1;
-	alt = (char *)malloc(sizeof(char) * n);
-	if (!alt)
+	dup_s = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (dup_s == NULL)
 		return (NULL);
-	return ((char *)ft_memcpy(alt, s1, n));
+	i = 0;
+	while (s[i] != '\0')
+	{
+		dup_s[i] = s[i];
+		i++;
+	}
+	dup_s[i] = '\0';
+	return (dup_s);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	char	string[] = "hello!";
-
-// 	printf("%s\n", strdup(string));
-// 	printf("%s\n", ft_strdup(string));
-// }

@@ -1,13 +1,13 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L ./mlx -lmlx -Ilmlx -lXext -lX11
 INCLUDE = -I./includes
 LIBFT = ./libft/libft.a
-FTPRINTF = ./ft_printf/libftprintf.a
+VPATH = srcs srcs/map srcs/utils
 RM = rm -rf
 NAME = so_long
 
-SRCS = map.c key.c error.c img.c player.c window.c main.c check_path.c
+SRCS = call_map.c so_long.c
 
 OBJ_DIR = obj
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
@@ -17,8 +17,9 @@ all: $(NAME)
 $(NAME): $(OBJ_DIR)  $(OBJS)
 	$(MAKE) -C ./libft
 	$(MAKE) -C ./mlx
-	$(MAKE) -C ./ft_printf
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(FTPRINTF) $(MLXFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+
+bonus: all
 
 $(OBJ_DIR):
 	mkdir -p obj

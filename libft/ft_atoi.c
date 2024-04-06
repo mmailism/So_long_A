@@ -3,67 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nnuno-ca <nnuno-ca@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 15:08:12 by kpueankl          #+#    #+#             */
-/*   Updated: 2023/09/04 15:45:35 by kpueankl         ###   ########.fr       */
+/*   Created: 2022/08/15 23:47:01 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2023/01/23 18:26:29 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 int	ft_atoi(const char *str)
 {
-	unsigned int	num;
-	signed char		sign;
-	size_t			i;
+	int			res;
+	int			signal;
+	int			i;
 
-	sign = 1;
-	num = 0;
+	res = 0;
+	signal = 1;
 	i = 0;
-	while ((str[i] == ' ' || str[i] == '\n'
-			|| str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\r' || str[i] == '\f') && str[i])
-		i++;
+	while (is_spaces(str[i]))
+		i += 1;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign = -1;
-		i++;
+			signal = -1;
+		i += 1;
 	}
-	while (str[i] != '\0')
-	{
-		if (! (48 <= str[i] && str[i] <= 57))
-			return (num * sign);
-		num = (num * 10) + str[i] - '0';
-		i++;
-	}
-	return (num * sign);
+	while (str[i] >= '0' && str[i] <= '9')
+		res = ((res * 10) + (str[i++] - '0'));
+	return (res * signal);
 }
-
-/*	int	i;
-	int	j;
-	int	k;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	while (((char)str[i] >= 9 && (char)str[i] <= 13) || (char)str[i] == ' ')
-	{
-		if ((char)str[i] == '-' || (char)str[i] == '+')
-			i++;
-		j++;
-	}
-	while ((char)str[i] >= 48 && (char)str[i] <= 57)
-	{
-		k = k * 10 + ((char)str[i++] - 48);
-	}
-	return (k);
-}*/
-
-/*#include <stdio.h>
-int main()
-{
-	printf("%d", ft_atoi("---8765"));
-}*/

@@ -3,25 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kpueankl <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nnuno-ca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/25 15:20:21 by kpueankl          #+#    #+#             */
-/*   Updated: 2023/08/25 15:20:23 by kpueankl         ###   ########.fr       */
+/*   Created: 2022/08/21 18:22:08 by nnuno-ca          #+#    #+#             */
+/*   Updated: 2022/08/23 15:29:40 by nnuno-ca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	size_t	i;
 
-	if (!s)
-		return ;
 	i = 0;
-	while (s[i] != '\0')
+	if (!s || !f)
+		return ;
+	while (*s)
 	{
-		f(i, s + i);
+		(*f)(i, s++);
 		i++;
 	}
 }
+
+/*
+	i = index
+	index starts at 0;
+	s starts at the index passed as a parameter (char *),
+	therefore the progression is different.
+*/

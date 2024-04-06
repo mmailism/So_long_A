@@ -13,7 +13,9 @@
 
 # define ESC 65307
 # define SP 32
-# define KEY_X 53
+# define Key_x 53
+# define K_X_linux 2018365136
+# define Key_linux 96385632
 # define M_CLK_L 1
 # define M_CLK_R 3
 # define M_CLK_M 2
