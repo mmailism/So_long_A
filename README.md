@@ -1,4 +1,4 @@
-= So_long is a project in 42Bangkok of KMITL.                      
+So_long is a project in 42Bangkok of KMITL.                      
 This project write by Kankamon.
 
 ![sol_long_42_kpueankl](https://github.com/user-attachments/assets/5bf03460-bc28-4102-8a8e-4ae9696f26da)
