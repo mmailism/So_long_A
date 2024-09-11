@@ -5,16 +5,16 @@
 > So_long is a project in 42Bangkok of KMITL.
 Project is a very small 2D game. It's built to make work with textures, sprites. And some very basic gameplay elements.
 
-========================================= 🖥 How to start game 🖥 =========================================
+=========================================== 🖥 How to start game 🖥 ===========================================
 - Type 'make' in Terminal .
 - Type './so_long <name_map_file.ber>' .
 
 Can create maps with
-> '0' is a floor.
-'1' is a wall.
-'P' is a player.
-'C' is a key collect.
-'E' is a exit.
+- '0' is a floor.
+- '1' is a wall.
+- 'P' is a player.
+- 'C' is a key collect.
+- 'E' is a exit.
 
 Example map:
 
