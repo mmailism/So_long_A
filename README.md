@@ -17,16 +17,10 @@ Can create maps with
 - 'E' is a exit.
 
 Example map:
-
-1111111111111111
-100000000C1110C1
-1000100100100C11
-1E0011C100101111
-110C1111C0000P11
-1111111111111111
+![Screenshot from 2024-09-11 12-22-08](https://github.com/user-attachments/assets/4c093cbf-8595-49a2-8ae8-6d3276d3fa8b)
 
 ============================================= 👾 How to play 👾 =============================================
-press W to move up.
-press A to move left.
-press S to move down.
-press D to move right.
+- press ***W*** to move up.
+- press ***A*** to move left.
+- press ***S*** to move down.
+- press ***D*** to move right.
