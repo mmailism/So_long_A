@@ -11,11 +11,11 @@
 - Type './so_long <name_map_file.ber>' .
 
 Can create maps with
-- **'0'** is a floor.
-- **'1'** is a wall.
-- **'P'** is a player.
-- **'C'** is a key collect.
-- **'E'** is an exit.
+- **0** is a floor.
+- **1** is a wall.
+- **P** is a player.
+- **C** is a key collect.
+- **E** is an exit.
 
 ![Screenshot from 2024-09-11 12-22-08](https://github.com/user-attachments/assets/4c093cbf-8595-49a2-8ae8-6d3276d3fa8b)
 
