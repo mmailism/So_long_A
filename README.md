@@ -1,4 +1,4 @@
-# Project So_long.
+# So_long by Kankamon.
 
 ![sol_long_42_kpueankl](https://github.com/user-attachments/assets/5bf03460-bc28-4102-8a8e-4ae9696f26da)
 
@@ -16,7 +16,6 @@ Can create maps with
 - 'C' is a key collect.
 - 'E' is a exit.
 
-Example map:
 ![Screenshot from 2024-09-11 12-22-08](https://github.com/user-attachments/assets/4c093cbf-8595-49a2-8ae8-6d3276d3fa8b)
 
 ============================================= 👾 How to play 👾 =============================================
