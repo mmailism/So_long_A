@@ -8,9 +8,9 @@
 
 ![sol_long_42_kpueankl](https://github.com/user-attachments/assets/5bf03460-bc28-4102-8a8e-4ae9696f26da)
 
-//////////////////////////////////// 🖥 How to start game 🖥 ////////////////////////////////////
-Type 'make' in Terminal.
-Type './so_long <name_map_file.ber>'
+========================================= 🖥 How to start game 🖥 =========================================
+- Type 'make' in Terminal .
+- Type './so_long <name_map_file.ber>' .
 
 Can create maps with '0' '1' 'P' 'C' 'E'
 '0' is a floor.
