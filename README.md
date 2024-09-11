@@ -1,4 +1,4 @@
-= This project write by Kankamon. =
+This project write by Kankamon.
 
 ![sol_long_42_kpueankl](https://github.com/user-attachments/assets/5bf03460-bc28-4102-8a8e-4ae9696f26da)
 
@@ -10,13 +10,13 @@ This project is a very small 2D game. It's built to make work with textures, spr
 - Type './so_long <name_map_file.ber>' .
 
 Can create maps with '0' '1' 'P' 'C' 'E'
-'0' is a floor.
-'1' is a wall.
-'P' is a player.
-'C' is a key collect.
-'E' is a exit.
+-'0' is a floor.
+-'1' is a wall.
+-'P' is a player.
+-'C' is a key collect.
+-'E' is a exit.
 
-Example map:
++ Example map:
 
 1111111111111111
 100000000C1110C1
