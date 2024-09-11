@@ -20,9 +20,11 @@ Can create maps with
 ![Screenshot from 2024-09-11 12-22-08](https://github.com/user-attachments/assets/4c093cbf-8595-49a2-8ae8-6d3276d3fa8b)
 
 ================================= 👾 How to play 👾 =================================
-- Press **W** to move up.
-- Press **A** to move left.
-- Press **S** to move down.
-- Press **D** to move right.
+- Press **W** to move up ⬆️
+- Press **A** to move left ⬅️
+- Press **S** to move down ⬇️
+- Press **D** to move right ➡️
 
-> Thank you for watching.
+
+
+> Thank you for watching. 
